@@ -103,6 +103,8 @@ class TrainerOptimizersMixin(ABC):
 
             elif isinstance(scheduler, optim.lr_scheduler._LRScheduler):
                 lr_schedulers.append({**default_config, 'scheduler': scheduler})
+            elif scheduler is None:
+                continue
             else:
                 raise ValueError(f'Input {scheduler} to lr schedulers '
                                  'is a invalid input.')
